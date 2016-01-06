@@ -63,13 +63,14 @@
   "min_packer_version": "0.7.0",
   "post-processors": [
   [
-    {
+
+  {
       "type": "vagrant"
     },
     {
       "type": "atlas",
       "only": ["vmware-iso"],
-      "artifact": "baseboxorg/osx-elcapitan",
+      "artifact": "baseboxorg/osx-10.11",
       "artifact_type": "vagrant.box",
       "metadata": {
         "provider": "vmware_desktop",
@@ -79,7 +80,7 @@
     {
       "type": "atlas",
       "only": ["virtualbox-iso"],
-      "artifact": "baseboxorg/osx-elcapitan",
+      "artifact": "baseboxorg/osx-10.11",
       "artifact_type": "vagrant.box",
       "metadata": {
         "provider": "virtualbox",
@@ -88,12 +89,7 @@
     }
   ]
   ],
-   "provisioners": [
-    {
-      "destination": "/private/tmp/set_kcpassword.py",
-      "source": "../scripts/support/set_kcpassword.py",
-      "type": "file"
-    },
+  "provisioners": [
     {
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
       "scripts": [
